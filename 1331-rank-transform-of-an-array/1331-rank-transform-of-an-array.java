@@ -1,6 +1,9 @@
 class Solution {
     public int[] arrayRankTransform(int[] arr) {
-        int[] temp = arr.clone();
+        int[] temp = new int[arr.length];
+        for (int i = 0; i < arr.length; i++){
+            temp[i]= arr[i];
+        }
         Arrays.sort(temp);
         Map<Integer,Integer> hm = new HashMap<>();
         int count = 1;
@@ -11,10 +14,12 @@ class Solution {
             } 
         }
 
+        int[]res = new int[arr.length];
+
         for (int i = 0; i < arr.length; i++){
-            arr[i] = hm.get(arr[i]);
+            res[i] = hm.get(arr[i]);
         }
         
-        return arr;
+        return res;
     }
 }
