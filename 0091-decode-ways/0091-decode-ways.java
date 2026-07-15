@@ -15,16 +15,17 @@ class Solution {
                 dp[i] = 0;
                 continue;
             }
+             //choice 2
+            if (validArr.contains(a+b)) {
+                dp[i] = dp[i+1] + dp[i+2];
+                continue;
+            }
             //choice 1
             if (validArr.contains(a)) {
                 dp[i] = dp[i+1];
             }
 
-            //choice 2
-            if (validArr.contains(a+b)) {
-                dp[i] = dp[i+1] + dp[i+2];
-
-            }
+           
         }
         return dp[0];
     }
