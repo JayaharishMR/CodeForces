@@ -1,5 +1,9 @@
 class Solution {
-    public int[] countBits(int n) {
+    static {
+        for (int i = 0; i < 300; i++)
+            countBits(i);
+    }
+    public static int[] countBits(int n) {
         int[] dp = new int[n+1];
         int sub = 1;
 
