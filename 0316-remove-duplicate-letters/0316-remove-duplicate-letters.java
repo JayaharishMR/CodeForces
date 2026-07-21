@@ -5,7 +5,7 @@ class Solution {
         for (char c : s.toCharArray()) {
             arr[c-'a']++;
         }
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); i++) {
             char curr = s.charAt(i);
             if (vis[curr-'a'] == true) {
