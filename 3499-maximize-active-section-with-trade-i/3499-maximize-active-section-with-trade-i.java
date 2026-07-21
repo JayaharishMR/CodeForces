@@ -2,9 +2,9 @@ class Solution {
     public int maxActiveSectionsAfterTrade(String s) {
         char[] arr = s.toCharArray();
         int ones = 0;
-        for (char c : arr) {
-            if (c == '1') ones++;
-        }
+        // for (char c : arr) {
+        //     if (c == '1') ones++;
+        // }
         int start = 0;
         int i = 0;
         int bestGain = 0;
@@ -22,6 +22,8 @@ class Solution {
                     bestGain = Math.max(bestGain, prev+curr);
                 }
                 prev = curr;
+            } else {
+                ones += i-start;
             }
         }
         return ones+bestGain;
