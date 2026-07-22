@@ -5,10 +5,11 @@ class Solution {
         int r = height.length -1;
         if (height.length <= 1) return max;
         while (l < r) {
-            max = Math.max(max, Math.min(height[l], height[r])*(r-l));
             if (height[l] > height[r]) {
+                max = Math.max(max, height[r]*(r-l));
                 r--;
             } else {
+                max = Math.max(max, height[l]*(r-l));
                 l++;
             }
         }
