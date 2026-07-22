@@ -5,13 +5,10 @@ class Solution {
         for (int i =0; i < k ; i++) {
             sum += nums[i];
         }
-        int l = 0;
         int r = k;
         int max = sum;
         while (r < nums.length) {
-            sum -= nums[l];
-            sum += nums[r];
-            l++;
+            sum += nums[r] - nums[r-k];
             r++;
             max = Math.max(max, sum);
         }
