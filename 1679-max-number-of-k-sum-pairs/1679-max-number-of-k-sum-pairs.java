@@ -1,18 +1,15 @@
 class Solution {
     public int maxOperations(int[] nums, int k) {
         int count = 0;
-        int l = 0;
-        int r = nums.length - 1;
-        Arrays.sort(nums);
-        while (l < r) {
-            if (nums[l] + nums[r] == k) {
-                l++;
-                r--;
+        Map<Integer, Integer> hm = new HashMap<>();
+        for (int i : nums) {
+            int diff = k - i;
+            int freq = hm.get(diff) != null ? hm.get(diff) : 0;
+            if (freq > 0) {
+                hm.put(diff, freq-1);
                 count++;
-            } else if (nums[l] + nums[r] < k) {
-                l++;
             } else {
-                r--;
+                hm.put(i, hm.getOrDefault(i,0)+1);
             }
         }
         return count;
