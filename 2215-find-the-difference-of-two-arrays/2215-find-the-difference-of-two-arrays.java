@@ -1,30 +1,26 @@
 class Solution {
-    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
-        Map<Integer, Integer> hm1 = new HashMap<>();
-        for (int i : nums1) {
-            hm1.put(i, 1);
+    // Returns the elements in the first arg nums1 that don't exist in the second arg nums2.
+    List<Integer> getElementsOnlyInFirstList(int[] nums1, int[] nums2) {
+        Set<Integer> onlyInNums1 = new HashSet<> (); 
+        
+        // Store nums2 elements in an unordered set. 
+        Set<Integer> existsInNums2 = new HashSet<> (); 
+        for (int num : nums2) {
+            existsInNums2.add(num);
         }
-        Set<Integer> seen = new HashSet<>();
-        Set<Integer> set2 = new HashSet<>();
-        for (int i : nums2) {
-            if (!hm1.containsKey(i)) {
-                set2.add(i);
-            } else {
-                seen.add(i);
+        
+        // Iterate over each element in the list nums1.
+        for (int num : nums1) {
+            if (!existsInNums2.contains(num)) {
+                onlyInNums1.add(num);
             }
         }
         
-        Set<Integer> set = new HashSet<>();
-        for (int i : nums1) {
-            if (!seen.contains(i)) {
-                set.add(i);
-            }
-        }
-        List<Integer> arr1 = new ArrayList<>(set);
-         List<Integer> arr2 = new ArrayList<>(set2);
-        List<List<Integer>> res = new ArrayList<>();
-        res.add(arr1);
-        res.add(arr2);
-        return res;
+        // Convert to vector.
+        return new ArrayList<>(onlyInNums1);
+    }
+    
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        return Arrays.asList(getElementsOnlyInFirstList(nums1, nums2), getElementsOnlyInFirstList(nums2, nums1));
     }
 }
