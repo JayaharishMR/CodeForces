@@ -1,9 +1,9 @@
 class Solution {
     public int minimumPushes(String word) {
         Map<String, Integer> hm = new HashMap<>();
-        if (word.length() <= 8) {
-            return word.length();
-        }
+        // if (word.length() <= 8) {
+        //     return word.length();
+        // }
         for (int i = 0; i < word.length(); i++) {
             hm.put(String.valueOf(word.charAt(i)), hm.getOrDefault(String.valueOf(word.charAt(i)),0)+1);
         }
