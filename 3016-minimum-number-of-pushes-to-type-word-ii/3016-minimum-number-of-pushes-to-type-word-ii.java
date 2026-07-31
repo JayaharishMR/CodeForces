@@ -16,8 +16,7 @@ class Solution {
         int distinct = 0;
         while (!pq.isEmpty()) {
             //System.out.println("count: "+count+"key: "+entry.getKey()+"value: "+entry.getValue());
-            int value = pq.poll();
-            count += value * (1 + (distinct/8));
+            count += pq.poll() * (1 + (distinct/8));
             distinct++;
         }
         return count;
