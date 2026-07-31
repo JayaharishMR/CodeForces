@@ -8,16 +8,15 @@ class Solution {
             hm.put(String.valueOf(word.charAt(i)), hm.getOrDefault(String.valueOf(word.charAt(i)),0)+1);
         }
 
-        PriorityQueue<Map.Entry<String,Integer>> pq = new PriorityQueue<>(
-            Map.Entry.<String, Integer>comparingByValue().reversed()
+        PriorityQueue<Integer> pq = new PriorityQueue<>(
+            (a,b) -> b - a
         );
-        pq.addAll(hm.entrySet());
+        pq.addAll(hm.values());
         int count = 0;
         int distinct = 0;
         while (!pq.isEmpty()) {
-            Map.Entry<String, Integer> entry = pq.poll();
-            int value = entry.getValue();
             //System.out.println("count: "+count+"key: "+entry.getKey()+"value: "+entry.getValue());
+            int value = pq.poll();
             for (int i  = 0; i < value; i++) {
                 count = count + 1+ distinct/8;
             }
