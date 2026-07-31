@@ -1,24 +1,29 @@
 class Solution {
+
     public int minimumPushes(String word) {
-        Map<String, Integer> hm = new HashMap<>();
-        // if (word.length() <= 8) {
-        //     return word.length();
-        // }
-        for (int i = 0; i < word.length(); i++) {
-            hm.put(String.valueOf(word.charAt(i)), hm.getOrDefault(String.valueOf(word.charAt(i)),0)+1);
+        // Frequency map to store count of each letter
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+
+        // Count occurrences of each letter
+        for (char c : word.toCharArray()) {
+            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
         }
 
-        PriorityQueue<Integer> pq = new PriorityQueue<>(
-            (a,b) -> b - a
+        // Priority queue to store frequencies in descending order
+        PriorityQueue<Integer> frequencyQueue = new PriorityQueue<>(
+            (a, b) -> b - a
         );
-        pq.addAll(hm.values());
-        int count = 0;
-        int distinct = 0;
-        while (!pq.isEmpty()) {
-            //System.out.println("count: "+count+"key: "+entry.getKey()+"value: "+entry.getValue());
-            count += pq.poll() * (1 + (distinct/8));
-            distinct++;
+        frequencyQueue.addAll(frequencyMap.values());
+
+        int totalPushes = 0;
+        int index = 0;
+
+        // Calculate total number of presses
+        while (!frequencyQueue.isEmpty()) {
+            totalPushes += (index / 8 + 1) * frequencyQueue.poll();
+            index++;
         }
-        return count;
+
+        return totalPushes;
     }
 }
