@@ -17,7 +17,7 @@ class Solution {
         while (!pq.isEmpty()) {
             Map.Entry<String, Integer> entry = pq.poll();
             int value = entry.getValue();
-            System.out.println("count: "+count+"key: "+entry.getKey()+"value: "+entry.getValue());
+            //System.out.println("count: "+count+"key: "+entry.getKey()+"value: "+entry.getValue());
             for (int i  = 0; i < value; i++) {
                 count = count + 1+ distinct/8;
             }
