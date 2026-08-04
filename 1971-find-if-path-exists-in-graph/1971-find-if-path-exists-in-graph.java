@@ -23,12 +23,12 @@ class Solution {
     }
 
     public void dfs(List<List<Integer>> graph, int curr, boolean[] visited, int destination) {
-        if (visited[curr]) return ;
+        if (visited[curr] || res) return ;
 
         for (int neighbour : graph.get(curr)) {
             if (neighbour == destination) {
                 res = true;
-                break;
+                return;
             }
             visited[curr] = true;
             dfs(graph, neighbour, visited, destination);
