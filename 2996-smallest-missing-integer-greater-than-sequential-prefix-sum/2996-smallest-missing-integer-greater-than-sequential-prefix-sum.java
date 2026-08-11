@@ -18,11 +18,6 @@ class Solution {
         if (finalSum > 50) {
             return finalSum;
         }
-        System.out.println("final Sum :"+finalSum);
-        for (int i : arr) {
-            System.out.print(i+", ");
-        }
-        System.out.println();
         for (int i = finalSum-1; i < arr.length; i++) {
             if (arr[i] != 1) {
                 return i+1;
