@@ -3,7 +3,7 @@ class Solution {
         if (nums.length == 1) {
             return nums[0]+1;
         }
-        int[] arr = new int[50];
+        int[] arr = new int[51];
         int finalSum = nums[0];
         arr[nums[0]-1] = 1;
         boolean found = false;
@@ -23,6 +23,6 @@ class Solution {
                 return i+1;
             }
         }
-        return 51;
+        return -1;
     }
 }
