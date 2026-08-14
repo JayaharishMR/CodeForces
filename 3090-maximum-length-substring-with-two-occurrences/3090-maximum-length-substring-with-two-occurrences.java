@@ -1,9 +1,5 @@
 class Solution {
     public int maximumLengthSubstring(String s) {
-        if (s.length() <= 2) {
-            return s.length();
-        }
-        StringBuilder sb = new StringBuilder(s);
         int l =0;
         int r =0;
         int max = 0;
