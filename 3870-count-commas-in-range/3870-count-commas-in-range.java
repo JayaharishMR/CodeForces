@@ -5,23 +5,19 @@ class Solution {
         }
         int res = 0;
         int m = 4;
+        int checkPoint = 10000;
         for (int i = 1000; i <= n; i++) {
             int a = m/3;
             if (m%3 == 0) {
                 a--;
             }
             res += a;
-            m = getLength(i);
+            if (i == checkPoint) {
+                m++;
+                checkPoint *= 10;
+            }
         }
         return res;
     }
 
-    public int getLength(int a) {
-        int res = 0;
-        while(a > 0) {
-            res++;
-            a = a/10;
-        }
-        return res;
-    }
 }
